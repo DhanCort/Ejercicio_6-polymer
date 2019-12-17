@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<base href="https://cdn.rawgit.com/download/polymer-cdn/2.6.0/lib/">
+<script src="webcomponentsjs/webcomponents-loader.js"></script>
+<link rel="import" href="iron-ajax/iron-ajax.html">
+<link rel="import" href="polymer/polymer-element.html">
+
+<dom-module id="ejercicio-6">
+	<template>
+		<style>
+
+			:host #card{
+				box-shadow: 2px 2px 5px 3px rgba(31,207,128,0.2);
+				width: 30%;
+				height: 400px;
+				text-align: center;
+				margin: 0 auto;
+			}
+
+			:host #titulo{
+				font-size: 11px;
+				padding-top: 5px;
+			}
+
+			:host div{
+				width: 30%;
+				height: auto;
+				text-align: center;
+				margin: 0 auto;
+
+			}
+
+			:host #texto{
+				width: 75%;
+				height: auto;
+				box-shadow: none;
+				background-color: #0D42D2;
+			}
+
+			:host #texto p{
+				color: yellow
+			}
+
+			:host input[type="text"]{
+				margin-top: 7px;
+				width: 75%;
+				height: 22px;
+				background-color: rgba(237,237,237,.3)				
+			}
+
+			:host #botones{
+				width: 75%;
+				display: flex;
+				flex-direction: column;
+				margin-top: 10px;
+		  }
+
+		  :host button {
+		  		margin-top: 8px;
+		  		height: 25px;
+		  		background-color: #1fcf80;
+		  }
+		</style>
+		<div id="card">
+			<div id="titulo">
+				<h2>Da click en los botones para cambiar el color</h2>
+			</div>
+			
+			<div id="texto">
+				<p>[[name]]</p>
+				<p>[[mensaje]]</p>
+			</div>
+
+			<input type="text" name="" value="{{name::input}}">
+			<br>
+			<input type="text" name="" value="{{mensaje::input}}">
+
+			<div id="botones">
+				<button on-click="changeVerde">to green</button>
+				<button on-click="changeYellow">to yellow</button>
+				<button on-click="changeGrey">to to grey</button>
+			</div>
+			
+		</div>
+		
+	</template>
+	<script>
+		class PolymerElement extends Polymer.Element {
+    static get is() { return "ejercicio-6"; }
+    static get properties() {
+      return {
+        name: {
+          type: String,
+          value: "Nombre"
+        },
+        mensaje:{
+          type: String,
+          value: ""
+        }
+      };      
+    }
+
+    changeVerde(){
+    	this.$.texto.style.backgroundColor = "green"
+    }
+
+    changeYellow(){
+    	this.$.texto.style.backgroundColor = "yellow"
+    }
+
+    changeGrey(){
+    	this.$.texto.style.backgroundColor = "grey"
+    }
+    
+  }
+  customElements.define(PolymerElement.is, PolymerElement);
+	</script>
+</dom-module>
+
+<ejercicio-6></ejercicio-6>
+
+</body>
+</html>
+
